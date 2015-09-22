@@ -6,7 +6,7 @@ This project uses [Jasmine Framework](http://jasmine.github.io/) to test the fun
 
 ### How to Run
 Download or clone the repository and open index.html in browser locally, 
-or to click [here](http://webbdev.github.io/Feed-Reader-Testing/)
+or to click [here](http://webbdev.github.io/Feed-Reader-Testing/).
 
 ### Tests
 RSS Feeds
