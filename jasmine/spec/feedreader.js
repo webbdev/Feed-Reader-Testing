@@ -27,7 +27,6 @@ $(function() {
         });
 
         var len = allFeeds.length;
-   
         // A test that loops through each feed in the allFeeds object
         // and ensures it has a URL defined and that the URL is not empty.
         it('all feeds URLs are defined and not empty', function() {
@@ -39,8 +38,7 @@ $(function() {
 
         // A test that loops through each feed in the allFeeds object
         // and ensures it has a name defined and that the name is not empty.
-        it('all feeds names are defined and not empty', function() {
-            
+        it('all feeds names are defined and not empty', function() {          
             for (var i = 0; i < len; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0); 
@@ -48,14 +46,11 @@ $(function() {
         });
     });
 
-
     // A test suite named "The menu"
-    describe('The menu', function() {    
-        
+    describe('The menu', function() {           
         // when page loads check that the body has the class 'menu-hidden'
         var menuHidden = $('body').hasClass('menu-hidden');
         var menuIcon = $('.menu-icon-link');
-
         // A test that ensures the menu element is hidden by default.
         it('menu is hidden by default', function() {
             expect(menuHidden).toBe(true);
@@ -80,23 +75,19 @@ $(function() {
          */
         // beforeEach to wait for async call to finish
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         it('feed container has at least 1 entry', function() {
             var entries = $('.feed').find('.entry');
             expect(entries.length).toBeGreaterThan(0);
         });
-
     });
 
     // A test suite named "New Feed Selection"
     describe('New Feed Selection', function() {
         var before;
         var afterchange;
-
         // A test that ensures when a new feed is loaded
         // by the loadFeed function that the content actually changes. 
         beforeEach(function(done) {
@@ -110,14 +101,15 @@ $(function() {
         });
 
         afterEach(function() {
-            loadFeed(0);
+            loadFeed(0, function() {
+                done();
+            });
         });
 
         it('content changes when a new feed is loaded', function() {
             expect(before).toBeDefined(); 
             expect(afterchange).toBeDefined();
-            expect(before).not.toEqual(afterchange);
+            expect(before).not.toBe(afterchange);
         });
     });
-       
 }());
